@@ -1,21 +1,38 @@
-import {DomListener} from '@core/DomListener'
+import {DomListener} from '@core/DomListener';
 
+/**
+ * Base component for all others
+ */
 export class ExcelComponent extends DomListener {
+  /**
+   * Constructor
+   * @param {Dom} $root
+   * @param {object} options
+   */
   constructor($root, options = {}) {
-    super($root, options.listeners)
-    this.name = options.name || ''
+    super($root, options.listeners);
+    this.name = options.name || '';
   }
 
-  // Возвращает шаблон компонента
+  /**
+   * Returns component's template
+   * @return {string}
+   */
   toHTML() {
-    return ''
+    return '';
   }
 
+  /**
+   * Method is called in render method of root component
+   */
   init() {
-    this.initDOMListeners()
+    this.initDOMListeners();
   }
 
+  /**
+   * Method is called in render method of root component
+   */
   destroy() {
-    this.removeDOMListeners()
+    this.removeDOMListeners();
   }
 }
