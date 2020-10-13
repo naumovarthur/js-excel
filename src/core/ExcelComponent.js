@@ -1,38 +1,36 @@
-import {DomListener} from '@core/DomListener';
+import {DomListener} from '@core/DomListener'
 
-/**
- * Base component for all others
- */
 export class ExcelComponent extends DomListener {
-  /**
-   * Constructor
-   * @param {Dom} $root
-   * @param {object} options
-   */
   constructor($root, options = {}) {
-    super($root, options.listeners);
-    this.name = options.name || '';
+    super($root, options.listeners)
+    this.name = options.name || ''
+    this.emitter = options.emitter
+    this.unsubscribers = []
+
+    this.prepare()
   }
 
-  /**
-   * Returns component's template
-   * @return {string}
-   */
+  prepare() {}
+
   toHTML() {
-    return '';
+    return ''
   }
 
-  /**
-   * Method is called in render method of root component
-   */
+  $emit(event, ...args) {
+    this.emitter.emit(event, ...args)
+  }
+
+  $on(event, fn) {
+    const unsub = this.emitter.subscribe(event, fn)
+    this.unsubscribers.push(unsub)
+  }
+
   init() {
-    this.initDOMListeners();
+    this.initDOMListeners()
   }
 
-  /**
-   * Method is called in render method of root component
-   */
   destroy() {
-    this.removeDOMListeners();
+    this.removeDOMListeners()
+    this.unsubscribers.forEach(unsub => unsub())
   }
 }

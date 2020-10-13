@@ -1,13 +1,16 @@
-/**
- * Transforms string by change first letter to upper,
- * and rest letters to lower case.
- * @param {string} string - string to transform
- * @return {string}
- */
 export function capitalize(string) {
   if (typeof string !== 'string') {
-    return '';
+    return ''
   } else {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
+}
+
+export function range(start, end) {
+  if (start > end) {
+    [end, start] = [start, end]
+  }
+  return new Array(end - start + 1)
+      .fill(0)
+      .map((_, i) => start + i)
 }

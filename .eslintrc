@@ -10,5 +10,10 @@
     "google"
   ],
   "rules": {
+    "require-jsdoc": "off",
+    "semi": "off",
+    "arrow-parens": "off",
+    "operator-linebreak": "off",
+    "comma-dangle": "off"
   }
 }

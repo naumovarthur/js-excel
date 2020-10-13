@@ -1,21 +1,27 @@
-/**
- * Helper for table selection
- */
 export class TableSelection {
-  /**
-   * Constructor
-   */
+  static className = 'selected'
+
   constructor() {
-    this.group = [];
+    this.group = []
+    this.current = null
   }
 
-  /**
-   * Adds element to selection
-   * @param {Dom} $el
-   */
+  clear() {
+    this.group.forEach($el => $el.removeClass(TableSelection.className))
+    this.group = []
+  }
+
   select($el) {
-    this.group.push($el);
+    this.clear()
+    $el.focus().addClass(TableSelection.className)
+    this.group.push($el)
+    this.current = $el
   }
 
-  // selectGroup() {}
+  selectGroup($group = []) {
+    this.clear()
+
+    this.group = $group
+    $group.forEach(($el) => $el.addClass(TableSelection.className))
+  }
 }
