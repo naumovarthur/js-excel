@@ -1,4 +1,4 @@
-import {$} from '@core/dom';
+import {$} from '@core/dom'
 
 export function resizeHandler($root, event) {
   const $resizer = $(event.target)
@@ -10,7 +10,7 @@ export function resizeHandler($root, event) {
 
   $resizer.css({
     opacity: 1,
-    [sideProp]: '-5000px'
+    [sideProp]: '-5000px',
   })
 
   document.onmousemove = e => {
@@ -40,7 +40,7 @@ export function resizeHandler($root, event) {
     $resizer.css({
       opacity: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     })
   }
 }
